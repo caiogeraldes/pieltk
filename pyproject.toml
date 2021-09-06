@@ -2,7 +2,7 @@
 name = "pieltk"
 version = "0.1.0"
 description = ""
-authors = ["Caio Geraldes <caioaguida@protonmail.com>"]
+authors = ["Caio Geraldes <caio.geraldes@usp.br"]
 license = "MIT"
 
 [tool.poetry.dependencies]
