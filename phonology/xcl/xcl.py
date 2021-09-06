@@ -1,0 +1,103 @@
+"""
+Classical Armenian Phonology. Sources:
+- `<https://www.unicode.org/charts/PDF/U0530.pdf>`_
+- Macack, Martin (2017) The phonology of Classical Armenian in Klein, Joseph
+  and Friz. (2017) Handbook of Comparative and Historical Linguistics, 41.2.
+
+"""
+
+__author__ = [
+        "Caio Geraldes <caio.geraldes@usp.br>"]
+
+
+MONOPHTONGS = [
+    "\u0561", # ա ARMENIAN SMALL LETTER AYB
+    "\u0565", # ե ARMENIAN SMALL LETTER ECH
+    "\u0568", # ը ARMENIAN SMALL LETTER ET
+    "\u056B", # ի ARMENIAN SMALL LETTER INI
+    "\u0578", # ո ARMENIAN SMALL LETTER VO
+    "\u0585" # օ ARMENIAN SMALL LETTER OH
+]
+
+DIPHTONGS = [
+    "\u0567",       # է ARMENIAN SMALL LETTER EH
+    "\u0578\u0575",  # ոյ
+    "\u0561\u0575", # այ
+    "\u0561\u0582", # աւ
+    "\u0565\u0582", # եւ
+    "\u056B\u0582", # իւ
+    "\u0565\u0561", # եա
+
+
+]
+
+GLIDES = [
+    "\u0575", # յ ARMENIAN SMALL LETTER YI
+    "\u0582", # ւ ARMENIAN SMALL LETTER YIWN
+    "\u057E", # վ ARMENIAN SMALL LETTER VEW
+]
+
+
+STOPS = [
+    "\u0562", # բ ARMENIAN SMALL LETTER BEN
+    "\u0563", # գ ARMENIAN SMALL LETTER GIM
+    "\u0564", # դ ARMENIAN SMALL LETTER DA
+    "\u0566", # զ ARMENIAN SMALL LETTER ZA
+    "\u0569", # թ ARMENIAN SMALL LETTER TO
+    "\u056F", # կ ARMENIAN SMALL LETTER KEN
+    "\u057A", # պ ARMENIAN SMALL LETTER PEH
+    "\u057F", # տ ARMENIAN SMALL LETTER TIWN
+    "\u0583", # փ ARMENIAN SMALL LETTER PIWR
+    "\u0584", # ք ARMENIAN SMALL LETTER KEH
+]
+
+LIQUIDS = [
+    "\u056C", # լ ARMENIAN SMALL LETTER LIWN
+    "\u0572", # ղ ARMENIAN SMALL LETTER GHAD
+    "\u0580", # ր ARMENIAN SMALL LETTER REH
+    "\u057C", # ռ ARMENIAN SMALL LETTER RA
+]
+
+AFFRICATES = [
+    "\u056E", # ծ ARMENIAN SMALL LETTER CA
+    "\u0571", # ձ ARMENIAN SMALL LETTER JA
+    "\u0573", # ճ ARMENIAN SMALL LETTER CHEH
+    "\u0579", # չ ARMENIAN SMALL LETTER CHA
+    "\u057B", # ջ ARMENIAN SMALL LETTER JHEH
+    "\u0581", # ց ARMENIAN SMALL LETTER CO
+]
+
+FRICATIVES = [
+    "\u057D", # ս ARMENIAN SMALL LETTER SEH
+    "\u0566", # զ ARMENIAN SMALL LETTER ZA
+    "\u056A", # ժ ARMENIAN SMALL LETTER ZHE
+    "\u056D", # խ ARMENIAN SMALL LETTER XEH
+    "\u0570", # հ ARMENIAN SMALL LETTER HO
+    "\u0577", # շ ARMENIAN SMALL LETTER SHA
+    "\u0586" # ֆ ARMENIAN SMALL LETTER FEH
+]
+
+
+NASALS = [
+    "\u0574", # մ ARMENIAN SMALL LETTER MEN
+    "\u0576", # ն ARMENIAN SMALL LETTER NOW
+]
+
+
+CONSONANTS_LOWER = STOPS +\
+        AFFRICATES +\
+        FRICATIVES +\
+        LIQUIDS +\
+        GLIDES +\
+        NASALS
+
+CONSONANTS = CONSONANTS_LOWER + [x.upper() for x in CONSONANTS_LOWER]
+
+RESONANTS_LOWER = NASALS + LIQUIDS + GLIDES
+RESONANTS =  RESONANTS_LOWER + [x.upper() for x in RESONANTS_LOWER]
+
+VOWELS_LOWER = MONOPHTONGS + DIPHTONGS
+VOWELS = VOWELS_LOWER + [x.upper() for x in VOWELS_LOWER]
+
+
+
