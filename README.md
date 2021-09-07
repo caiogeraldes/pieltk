@@ -20,3 +20,4 @@ Some of the tools included in this project are part of my research with the
     - Lycian `xlc`
     - Lydian `xld`
     - Old Persian `peo`
+    - Oscan `osc`
