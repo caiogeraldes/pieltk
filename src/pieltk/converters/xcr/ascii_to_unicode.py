@@ -117,7 +117,6 @@ class AsciiConverter:
         return self.script_set
 
 
-
 if __name__ == "__main__":
     carian = AsciiConverter()
     STRING = "s'jas: san tur"

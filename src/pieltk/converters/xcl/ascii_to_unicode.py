@@ -309,7 +309,6 @@ class AsciiConverter:
         return self.script_set
 
 
-
 if __name__ == "__main__":
     ascii_replace = AsciiConverter()
     STRING = "Patasxani et hreshtakn ew asee c'na."
