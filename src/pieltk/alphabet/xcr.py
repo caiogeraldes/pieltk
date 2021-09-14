@@ -207,4 +207,4 @@ SINURI_KILDARA = [
     "\U000102C4",  # 𐋄 ŋ?
 ]
 
-# TODO: Kaunos, C.series, Memphis
+# Kaunos, C.series, Memphis
