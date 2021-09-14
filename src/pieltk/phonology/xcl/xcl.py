@@ -10,76 +10,75 @@ __author__ = ["Caio Geraldes <caio.geraldes@usp.br>"]
 
 
 MONOPHTONGS = [
-    "\u0561",  # ա ARMENIAN SMALL LETTER AYB
-    "\u0565",  # ե ARMENIAN SMALL LETTER ECH
-    "\u0568",  # ը ARMENIAN SMALL LETTER ET
-    "\u056B",  # ի ARMENIAN SMALL LETTER INI
-    "\u0578",  # ո ARMENIAN SMALL LETTER VO
-    "\u0585"  # օ ARMENIAN SMALL LETTER OH
+    "\u0561",  # a
+    "\u0565",  # e
+    "\u0568",  # schwa
+    "\u056B",  # i
+    "\u0578",  # o
+    "\u0585"  # o:
 ]
 
 DIPHTONGS = [
-    "\u0567",        # է ARMENIAN SMALL LETTER EH
-    "\u0578\u0575",   # ոյ
-    "\u0561\u0575",  # այ
-    "\u0561\u0582",  # աւ
-    "\u0565\u0582",  # եւ
-    "\u056B\u0582",  # իւ
-    "\u0565\u0561",  # եա
+    "\u0567",        # ey
+    "\u0578\u0575",   # oy
+    "\u0561\u0575",  # ay
+    "\u0561\u0582",  # aw
+    "\u0565\u0582",  # ew
+    "\u056B\u0582",  # iw
+    "\u0565\u0561",  # ea
 
 
 ]
 
 GLIDES = [
-    "\u0575",  # յ ARMENIAN SMALL LETTER YI
-    "\u0582",  # ւ ARMENIAN SMALL LETTER YIWN
-    "\u057E",  # վ ARMENIAN SMALL LETTER VEW
+    "\u0575",  # yod
+    "\u0582",  # waw
+    "\u057E",  # v
 ]
 
 
 STOPS = [
-    "\u0562",  # բ ARMENIAN SMALL LETTER BEN
-    "\u0563",  # գ ARMENIAN SMALL LETTER GIM
-    "\u0564",  # դ ARMENIAN SMALL LETTER DA
-    "\u0566",  # զ ARMENIAN SMALL LETTER ZA
-    "\u0569",  # թ ARMENIAN SMALL LETTER TO
-    "\u056F",  # կ ARMENIAN SMALL LETTER KEN
-    "\u057A",  # պ ARMENIAN SMALL LETTER PEH
-    "\u057F",  # տ ARMENIAN SMALL LETTER TIWN
-    "\u0583",  # փ ARMENIAN SMALL LETTER PIWR
-    "\u0584",  # ք ARMENIAN SMALL LETTER KEH
+    "\u0562",  # b
+    "\u0563",  # g
+    "\u0564",  # d
+    "\u0569",  # th
+    "\u056F",  # k
+    "\u057A",  # p
+    "\u057F",  # t
+    "\u0583",  # ph
+    "\u0584",  # kh
 ]
 
 LIQUIDS = [
-    "\u056C",  # լ ARMENIAN SMALL LETTER LIWN
-    "\u0572",  # ղ ARMENIAN SMALL LETTER GHAD
-    "\u0580",  # ր ARMENIAN SMALL LETTER REH
-    "\u057C",  # ռ ARMENIAN SMALL LETTER RA
+    "\u056C",  # l
+    "\u0572",  # ł
+    "\u0580",  # R
+    "\u057C",  # r
 ]
 
 AFFRICATES = [
-    "\u056E",  # ծ ARMENIAN SMALL LETTER CA
-    "\u0571",  # ձ ARMENIAN SMALL LETTER JA
+    "\u056E",  # ts
+    "\u0571",  # dz
     "\u0573",  # ճ ARMENIAN SMALL LETTER CHEH
     "\u0579",  # չ ARMENIAN SMALL LETTER CHA
     "\u057B",  # ջ ARMENIAN SMALL LETTER JHEH
-    "\u0581",  # ց ARMENIAN SMALL LETTER CO
+    "\u0581",  # c'
 ]
 
 FRICATIVES = [
-    "\u057D",  # ս ARMENIAN SMALL LETTER SEH
-    "\u0566",  # զ ARMENIAN SMALL LETTER ZA
-    "\u056A",  # ժ ARMENIAN SMALL LETTER ZHE
-    "\u056D",  # խ ARMENIAN SMALL LETTER XEH
-    "\u0570",  # հ ARMENIAN SMALL LETTER HO
-    "\u0577",  # շ ARMENIAN SMALL LETTER SHA
-    "\u0586"  # ֆ ARMENIAN SMALL LETTER FEH
+    "\u057D",  # s
+    "\u0566",  # z
+    "\u056A",  # zh
+    "\u056D",  # xh
+    "\u0570",  # h
+    "\u0577",  # sh
+    "\u0586"  # f
 ]
 
 
 NASALS = [
-    "\u0574",  # մ ARMENIAN SMALL LETTER MEN
-    "\u0576",  # ն ARMENIAN SMALL LETTER NOW
+    "\u0574",  # m
+    "\u0576",  # n
 ]
 
 
