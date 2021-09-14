@@ -1,6 +1,7 @@
 # pieltk (proto-indo-european toolkit)
 
-![Tests](https://github.com/caiogeraldes/pieltk/actions/workflows/tests.yml/badge.svg)
+![tests](https://github.com/caiogeraldes/pieltk/actions/workflows/tests.yml/badge.svg)
+![pylint](https://github.com/caiogeraldes/pieltk/actions/workflows/pylint.yml/badge.svg)
 
 This project is an extension of [pieoffice](https://github.com/caiogeraldes/pieoffice),
 built with the [cltk](https://github.com/cltk/cltk) as model.
