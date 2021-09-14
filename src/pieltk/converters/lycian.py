@@ -1,4 +1,8 @@
-alpha_to_lycian = (
+"""
+Implements Lycian converter.
+"""
+
+ALPHA_TO_LYCIAN = [
     (r"a", "𐊀"),
     (r"b", "𐊂"),
     (r"g", "𐊄"),
@@ -28,4 +32,4 @@ alpha_to_lycian = (
     (r"q", "𐊌"),
     (r"B", "𐊃"),
     (r"x", "𐊜"),
-    (r"th", "𐊉"),)
+    (r"th", "𐊉")]

@@ -1,9 +1,10 @@
 """
 Converter for Carian Script
 """
-import re
 
-ASCII_TO_CARIAN_SCRIPT = (
+from pieltk.converters.general import AsciiConverter
+
+ASCII_TO_CARIAN_SCRIPT = [
     (r"a", "𐊠"),
     (r"e2", "𐋏"),
     (r"r2", "𐋉"),
@@ -53,10 +54,10 @@ ASCII_TO_CARIAN_SCRIPT = (
     (r"b'", "𐊡"),
     (r"b", "𐊩"),
     (r"m", "𐊪"),
-)
+]
 
 
-class AsciiConverter:
+class AsciiCarian(AsciiConverter):
     """
     Replace ASCII notation with an Unicode transliteration scheme for
     Carian.
@@ -87,37 +88,18 @@ class AsciiConverter:
             ascii_string : str
                 String with the text to be converted in ASCII notation.
 
-    >>> carian = AsciiConverter()
+    >>> carian = AsciiCarian()
     >>> string = "s'jas: san tur"
     >>> carian.converter(string)
     "𐊸𐋅𐊠𐊰: 𐊰𐊠𐊵 𐊭𐊲𐊥"
     """
 
     def __init__(self, scheme="script"):
-        if scheme != "script":
-            print("No other transliteration scheme implemented yet")
-        self.scheme = "script"
+        super().__init__(scheme)
         self.script_set = ASCII_TO_CARIAN_SCRIPT
-
-    def converter(self, ascii_text):
-        """
-        Covert ascii_text to unicode text according to the rules of self.
-        """
-        output = ascii_text
-
-        for pair in self.script_set:
-            output = re.sub(pair[0], pair[1], output)
-        return output
-
-    @property
-    def rules(self):
-        """
-        Return the conversion rules of the converter
-        """
-        return self.script_set
 
 
 if __name__ == "__main__":
-    carian = AsciiConverter()
+    carian = AsciiCarian()
     STRING = "s'jas: san tur"
     print(carian.converter(STRING))

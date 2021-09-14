@@ -1,4 +1,8 @@
-alpha_to_polytonicgreek = (
+"""
+Implements Polytonic Greek converter
+"""
+
+ALPHA_TO_POLYTONICGREEK = [
     # Reordering diacritics
     # Bringing breathings and diairesis first, then accents,
     # then subscript iota
@@ -92,4 +96,4 @@ alpha_to_polytonicgreek = (
     # Punctuation
     # middle dot
     (r":", "\u00b7"),
-    (r"'", "\u02bc"),)
+    (r"'", "\u02bc")]

@@ -7,7 +7,7 @@ TODO: Propose puctuation scheme
 
 """
 
-import re
+from pieltk.converters.general import AsciiConverter
 
 __author__ = ["Caio Geraldes <caio.geraldes@usp.br"]
 
@@ -117,7 +117,7 @@ ASCII_TO_AVESTAN_HOFFMAN = [
 ]
 
 
-class AsciiConverter:
+class AsciiAvestan(AsciiConverter):
     """
     Replace ASCII notation with an Unicode transliteration scheme for
     Avestan.
@@ -159,6 +159,7 @@ class AsciiConverter:
     """
 
     def __init__(self, scheme="script"):
+        super().__init__(scheme)
         if scheme == "roman-hoffman":
             self.scheme = "roman-hoffman"
             self.script_set = ASCII_TO_AVESTAN_HOFFMAN
@@ -166,27 +167,10 @@ class AsciiConverter:
             self.scheme = "script"
             self.script_set = ASCII_TO_AVESTAN_SCRIPT
 
-    def converter(self, ascii_text):
-        """
-        Covert ascii_text to unicode text according to the rules of self.
-        """
-        output = ascii_text
-
-        for pair in self.script_set:
-            output = re.sub(pair[0], pair[1], output)
-        return output
-
-    @property
-    def rules(self):
-        """
-        Return the conversion rules of the converter
-        """
-        return self.script_set
-
 
 if __name__ == "__main__":
-    ascii_replace = AsciiConverter()
+    ascii_replace = AsciiAvestan()
     STRING = "ahiiA. yAsA na.manghA. ustAnazastO."
     print(ascii_replace.converter(STRING))
-    ascii_replace = AsciiConverter("roman-hoffman")
+    ascii_replace = AsciiAvestan("roman-hoffman")
     print(ascii_replace.converter(STRING))

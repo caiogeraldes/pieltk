@@ -1,4 +1,8 @@
-alpha_to_oldpersian_cuneiform = (
+"""
+Implements Old Persian Cuneiform converter.
+"""
+
+ALPHA_TO_OLDPERSIAN_CUNEIFORM = [
     (r"-", ""),
     (r"ahuramazda1", "𐏈"),
     (r"ahuramazda2", "𐏉"),
@@ -48,4 +52,4 @@ alpha_to_oldpersian_cuneiform = (
     (r"s", "𐎿"),
     (r"z", "𐏀"),
     (r"š", "𐏁"),
-    (r"h", "𐏃"),)
+    (r"h", "𐏃")]

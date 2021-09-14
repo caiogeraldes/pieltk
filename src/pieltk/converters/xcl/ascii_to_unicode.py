@@ -10,13 +10,9 @@ The ISO output follows ISO 9985 (1996).
 The Classical output is based in Hübschmann-Meillet with adaptations from
 Macack, Martin (2017) The phonology of Classical Armenian in Klein, Joseph and
 Friz. (2017) Handbook of Comparative and Historical Linguistics, volume 41.2.
-
-
-TODO: Add tests
-TODO: Implement a system to derive the D՜D notation for numerical conversion.
 """
 
-import re
+from pieltk.converters.general import AsciiConverter
 
 __author__ = ["Caio Geraldes <caio.geraldes@usp.br"]
 
@@ -219,7 +215,7 @@ ARMENIAN_SCRIPT_NUMBERS = [
 ]
 
 
-class AsciiConverter:
+class AsciiArmenian(AsciiConverter):
     """
     Replace ASCII notation with an Unicode transliteration scheme for
     Classical Armenian.
@@ -253,71 +249,52 @@ class AsciiConverter:
             ascii_string : str
                 String with the text to be converted in ASCII notation.
 
-    >>> from cltk.alphabet.arm.ascii_to_unicode import AsciiConverter
-    >>> ascii_replace = AsciiConverter()
+    >>> from cltk.alphabet.arm.ascii_to_unicode import AsciiArmenian
+    >>> ascii_replace = AsciiArmenian()
     >>> string = "Patasxani et hreshtakn ew asee c'na."
     >>> ascii_replace.converter(string)
     "Պատասխանի ետ հրեշտակն և ասէ ցնա։"
-    >>> ascii_replace_iso = AsciiConverter("iso")
+    >>> ascii_replace_iso = AsciiArmenian("iso")
     >>> ascii_replace_iso.converter(string)
     "Patasxani et hreštakn ew asē c’na."
-    >>> ascii_replace_classical = AsciiConverter("classical")
+    >>> ascii_replace_classical = AsciiArmenian("classical")
     >>> ascii_replace_classical.converter(string)
     "Patasxani et hreštakn ew asē cʿna."
-    >>> ascii_replace_maiscules = AsciiConverter("armenian_maiscules")
+    >>> ascii_replace_maiscules = AsciiArmenian("armenian_maiscules")
     >>> ascii_replace_maiscules.converter(string)
     "ՊԱՏԱՍԽԱՆԻ ԵՏ ՀՐԵՇՏԱԿՆ ԵՒ ԱՍԷ ՑՆԱ։"
     """
 
     def __init__(self, scheme="armenian_alphabet"):
+        super().__init__(scheme)
         if scheme == "armenian_alphabet":
-            self.scheme = "armenian_alphabet"
+            # self.scheme = scheme
             self.script_set = ASCII_TO_ARMENIAN_SCRIPT_MINISCULES\
                 + ASCII_TO_ARMENIAN_SCRIPT_MAISCULES\
                 + ASCII_TO_ARMENIAN_SCRIPT_PUNCT\
                 + ARMENIAN_SCRIPT_NUMBERS
         elif scheme == "armenian_maiscules":
-            self.scheme = "armenian_maiscules"
+            # self.scheme = "armenian_maiscules"
             self.script_set = ASCII_TO_ARMENIAN_SCRIPT_MAISCULES\
                 + ASCII_TO_ARMENIAN_SCRIPT_PUNCT\
                 + ARMENIAN_SCRIPT_NUMBERS
         elif scheme == "iso":
-            self.scheme = "iso"
+            # self.scheme = "iso"
             self.script_set = ASCII_TO_ARMENIAN_ISO
         elif scheme == "classical":
-            self.scheme = "classical"
+            # self.scheme = "classical"
             self.script_set = ASCII_TO_ARMENIAN_CLASSICAL
-
-    def converter(self, ascii_text):
-        """
-        Covert ascii_text to unicode text according to the rules of self.
-        """
-        if self.scheme == "armenian_maiscules":
-            output = ascii_text.upper()
-        else:
-            output = ascii_text
-
-        for pair in self.script_set:
-            output = re.sub(pair[0], pair[1], output)
-        return output
-
-    @property
-    def rules(self):
-        """
-        Return the conversion rules of the converter
-        """
-        return self.script_set
 
 
 if __name__ == "__main__":
-    ascii_replace = AsciiConverter()
+    ascii_replace = AsciiArmenian()
     STRING = "Patasxani et hreshtakn ew asee c'na."
     print(ascii_replace.converter(STRING))
-    ascii_replace_iso = AsciiConverter("iso")
+    ascii_replace_iso = AsciiArmenian("iso")
     print(ascii_replace_iso.converter(STRING))
-    ascii_replace_classical = AsciiConverter("classical")
+    ascii_replace_classical = AsciiArmenian("classical")
     print(ascii_replace_classical.converter(STRING))
-    ascii_replace_maiscules = AsciiConverter("armenian_maiscules")
+    ascii_replace_maiscules = AsciiArmenian("armenian_maiscules")
     print(ascii_replace_maiscules.converter(STRING))
     STRING = "9821"
     print(ascii_replace_maiscules.converter(STRING))

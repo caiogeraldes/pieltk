@@ -1,4 +1,8 @@
-alpha_to_pie = (
+"""
+Implements Proto Indo-European converter.
+"""
+
+ALPHA_TO_PIE = [
     (r"A\/", "ā́"),
     (r"A", "ā"),
     (r"I\/", "ī́"),
@@ -43,4 +47,4 @@ alpha_to_pie = (
     (r"E", "ē"),
     (r"Ó", "ṓ"),
     (r"M", "m̥"),
-    (r"N", "n̥"),)
+    (r"N", "n̥")]

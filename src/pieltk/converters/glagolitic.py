@@ -1,4 +1,8 @@
-alpha_to_glagolitic = (
+"""
+Implements Glagolitic converter.
+"""
+
+ALPHA_TO_GLAGOLITIC = [
     (r"yõ", "Ⱙ"),
     (r"yo~", "Ⱙ"),
     (r"ya", "Ⱑ"),
@@ -45,5 +49,4 @@ alpha_to_glagolitic = (
     (r"'i", "Ⰺ"),
     (r"'", "Ⱐ"),
     (r"th", "Ⱚ"),
-    (r"v", "Ⱛ"),
-)
+    (r"v", "Ⱛ")]

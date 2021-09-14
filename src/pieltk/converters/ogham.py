@@ -1,4 +1,8 @@
-alpha_to_ogham = (
+"""
+Implements Ogham converter.
+"""
+
+ALPHA_TO_OGHAM = [
     (r",ear,", "ᚕ"),
     (r",or,", "ᚖ"),
     (r",uilleann,", "ᚗ"),
@@ -30,5 +34,4 @@ alpha_to_ogham = (
     (r"e", "ᚓ"),
     (r"i", "ᚔ"),
     (r">", "᚛"),
-    (r"<", "᚜"),
-)
+    (r"<", "᚜")]

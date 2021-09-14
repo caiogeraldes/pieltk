@@ -1,4 +1,8 @@
-alpha_to_hieroglyphic_luwian = (
+"""
+Implements Hieroglyphic Luwian converter.
+"""
+
+ALPHA_TO_HIEROGLYPHIC_LUWIAN = [
     (r"\(DEUS\)MONS.MENSA", "𔕍"),
     (r"\(DEUS\)MONS.SARPA", "𔕍"),
     (r"\(DEUS\)VIA\+TERRA", "𔓧"),
@@ -735,4 +739,4 @@ alpha_to_hieroglyphic_luwian = (
     (r">", "𔗏"),
 
     (r"-", "")
-)
+]

@@ -1,4 +1,8 @@
-alpha_to_gothic = (
+"""
+Implements Gothic converter
+"""
+
+ALPHA_TO_GOTHIC = [
     (r"th", "𐌸"),
     (r"q'", "𐍁"),
     (r"z'", "𐍊"),
@@ -25,5 +29,4 @@ alpha_to_gothic = (
     (r"w", "𐍅"),
     (r"f", "𐍆"),
     (r"x", "𐍇"),
-    (r"o", "𐍉"),
-)
+    (r"o", "𐍉")]

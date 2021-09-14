@@ -1,4 +1,8 @@
-alpha_to_hittite_cuneiform = (
+"""
+Implements Hittite converter.
+"""
+
+ALPHA_TO_HITTITE_CUNEIFORM = [
     (r"'d", "𒀭"),
     (r"'m", "𒁹"),
     (r"gloss", "𒑱"),
@@ -225,4 +229,4 @@ alpha_to_hittite_cuneiform = (
     (r"8", "𒐍"),
     (r"9", "𒐎"),
 
-    (r"-", ""),)
+    (r"-", "")]

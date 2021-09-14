@@ -1,4 +1,8 @@
-alpha_to_oscan = (
+"""
+Implements Oscan converter.
+"""
+
+ALPHA_TO_OSCAN = [
     (r"a", "𐌀"),
     (r"b", "𐌁"),
     (r"g", "𐌂"),
@@ -20,4 +24,4 @@ alpha_to_oscan = (
     (r"u", "𐌖"),
     (r"f", "𐌚"),
     (r"ú", "𐌞"),
-    (r"í", "𐌝"),)
+    (r"í", "𐌝")]

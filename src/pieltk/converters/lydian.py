@@ -1,4 +1,8 @@
-alpha_to_lydian = (
+"""
+Implements Lydian converter.
+"""
+
+alpha_to_lydian = [
     (r"a", "𐤠"),
     (r"b", "𐤡"),
     (r"p", "𐤡"),
@@ -31,4 +35,4 @@ alpha_to_lydian = (
     (r"L", "𐤷"),
     (r"N", "𐤸"),
     (r"c", "𐤹"),
-    (r"\.", ""),)
+    (r"\.", "")]

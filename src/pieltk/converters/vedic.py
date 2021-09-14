@@ -1,7 +1,12 @@
-import re
-from typing import Tuple
+"""
+Implements Devanagari converters.
+"""
 
-ASCII_HK_TO_DEVA = (
+import re
+from typing import Tuple, List
+from pieltk.converters.general import AsciiConverter
+
+ASCII_HK_TO_DEVA = [
     (r"([\n ]|^)ai", r"\1ऐ"),
     (r"([\n ]|^)au", r"\1औ"),
     (r"([\n ]|^)a", r"\1अ"),
@@ -126,10 +131,10 @@ ASCII_HK_TO_DEVA = (
 
     (r"(\u094d)[\u0951\u0952]\\", r"\1"),
     (r"\/[\u0951\u0952]", r""),
-)
+]
 
 
-ASCII_HK_TO_IAST = (
+ASCII_HK_TO_IAST = [
     (r"A", "ā"),
     (r"I", "ī"),
     (r"U", "ū"),
@@ -151,9 +156,9 @@ ASCII_HK_TO_IAST = (
     (r"M", "ṃ"),
     (r"H", "ḥ"),
     (r"&", "m̐")
-)
+]
 
-ASCII_HK_TO_ISO = (
+ASCII_HK_TO_ISO = [
     (r"A", "ā"),
     (r"I", "ī"),
     (r"U", "ū"),
@@ -178,56 +183,71 @@ ASCII_HK_TO_ISO = (
     (r"\\", "\u0300"),
     (r"/", "\u0301"),
     (r"&", "m̐")
-)
+]
 
 
-def hkUdToHkAnu(hkUdStr):
-    hkSyllab = hkToSyllables(hkUdStr)
-    hkAcc = hkAccentuation(hkSyllab)
+def hk_ud_to_hk_anu(hk_ud_str):
+    """
+    Converts HK entry with marked udattas to HK text with marked
+    anudattas and svaritas.
+    """
+    hk_syllab = hk_to_syllables(hk_ud_str)
+    hk_acc = hk_accentuation(hk_syllab)
 
-    hkSyllabArray = hkSyllab.split(".")
-    hkAnuAcc = list(udToAnu(hkAcc))
+    hk_syllab_array = hk_syllab.split(".")
+    hk_anu_acc = list(ud_to_anu(hk_acc))
 
-    hkAnuStr = map(anudatta_apply, hkAnuAcc, hkSyllabArray)
+    hk_anu_str = map(anudatta_apply, hk_anu_acc, hk_syllab_array)
 
-    return("".join(list(hkAnuStr)))
+    return "".join(list(hk_anu_str))
 
 
 def anudatta_apply(accent, syllabe):
+    """
+    Apply the accentuation with anudatta and svarita to syllable.
+    """
+    out_syllab = ""
     if accent == "A":
-        return (syllabe + "=")
+        out_syllab = syllabe + "="
     elif accent == "S":
-        return (syllabe + "\\")
+        out_syllab = syllabe + "\\"
     else:
-        return syllabe.replace("/", "")
+        out_syllab = syllabe.replace("/", "")
+    return out_syllab
 
 
-def hkToSyllables(hkStr):
-    hkSyllab = hkStr
-    hkSyllab = re.sub(r"([aeiouAEIOUR])", r"\1.", hkSyllab)
-    hkSyllab = re.sub(r"a\.([ui])\.", r"a\1.", hkSyllab)
-    hkSyllab = re.sub(r"\.\/", r"/.", hkSyllab)
-    hkSyllab = re.sub(r"\.([HM&])", r"\1.", hkSyllab)
-    hkSyllab = re.sub(r"R\.R", r"RR", hkSyllab)
+def hk_to_syllables(hk_str):
+    """
+    Split syllables from HK entry.
+    """
+    hk_syllab = hk_str
+    hk_syllab = re.sub(r"([aeiouAEIOUR])", r"\1.", hk_syllab)
+    hk_syllab = re.sub(r"a\.([ui])\.", r"a\1.", hk_syllab)
+    hk_syllab = re.sub(r"\.\/", r"/.", hk_syllab)
+    hk_syllab = re.sub(r"\.([HM&])", r"\1.", hk_syllab)
+    hk_syllab = re.sub(r"R\.R", r"RR", hk_syllab)
 
-    hkSyllab = re.sub(r"\.$", "", hkSyllab)
+    hk_syllab = re.sub(r"\.$", "", hk_syllab)
 
-    return hkSyllab
+    return hk_syllab
 
 
-def hkAccentuation(hkSyllab):
-    hkAcc = []
-    hkSyllab_list = hkSyllab.split(".")
+def hk_accentuation(hk_syllab):
+    """
+    Map accentuation of HK entry.
+    """
+    hk_acc = []
+    hk_syllab_list = hk_syllab.split(".")
 
-    for syllabe in hkSyllab_list:
+    for syllabe in hk_syllab_list:
         if "/" in syllabe:
-            hkAcc.append("U")
+            hk_acc.append("U")
         else:
-            hkAcc.append("B")
-    return ("".join(hkAcc))
+            hk_acc.append("B")
+    return "".join(hk_acc)
 
 
-def udToAnu(udStr):
+def ud_to_anu(ud_str):
     """
      Converts a string of udatta marked syllables to
      an anudatta marked one. Notation:
@@ -238,31 +258,35 @@ def udToAnu(udStr):
      D = unmarked in anudatta notation
 
      Example:
-     >>> udToAnu('BBUBBUUB')
+     >>> ud_to_anu('BBUBBUUB')
      "AADSADDS"
     """
 
-    anuStr = udStr
+    anu_str = ud_str
 
-    anuStr = re.sub(r"BU",  "AU", anuStr)
-    anuStr = re.sub(r"UB",  "US", anuStr)
-    anuStr = re.sub(r"U",   "D", anuStr)
+    anu_str = re.sub(r"BU",  "AU", anu_str)
+    anu_str = re.sub(r"UB",  "US", anu_str)
+    anu_str = re.sub(r"U",   "D", anu_str)
 
-    while ("BA" in anuStr or "BD" in anuStr):
-        anuStr = re.sub(r"^(B*)[BD](A)",    r"\1A\2", anuStr)
-        anuStr = re.sub(r"\n(B*)[BD](A)",   r"\1A\2", anuStr)
-        anuStr = re.sub(r"([ADSB])B([AD])", r"\1D\2", anuStr)
-        anuStr = re.sub(r"B$", "D", anuStr)
+    while ("BA" in anu_str or "BD" in anu_str):
+        anu_str = re.sub(r"^(B*)[BD](A)",    r"\1A\2", anu_str)
+        anu_str = re.sub(r"\n(B*)[BD](A)",   r"\1A\2", anu_str)
+        anu_str = re.sub(r"([ADSB])B([AD])", r"\1D\2", anu_str)
+        anu_str = re.sub(r"B$", "D", anu_str)
 
-    return anuStr
+    return anu_str
 
 
-class AsciiConverter:
+class AsciiDevanagari(AsciiConverter):
+    """
+    Implement ASCII to Unicode Devanagari converter with given schemes.
+    """
     def __init__(self, scheme: str = "hk_to_deva", udatta_to_anudatta: bool = True):
+        super().__init__(scheme)
         self.udata_to_anudatta = udatta_to_anudatta
         if scheme == "hk_to_deva":
             self.scheme = "hk_to_deva"
-            self.script_set: Tuple[Tuple[str, str], ...] = ASCII_HK_TO_DEVA
+            self.script_set: List[Tuple[str, str]] = ASCII_HK_TO_DEVA
         elif scheme == "hk_to_iast":
             self.scheme = "hk_to_iast"
             self.script_set = ASCII_HK_TO_IAST
@@ -273,8 +297,12 @@ class AsciiConverter:
             self.udata_to_anudatta = False
 
     def converter(self, ascii_text):
+        """
+        Modifies the AsciiConverter.converter() method to work with
+        vedic accents.
+        """
         if self.udata_to_anudatta and self.scheme == "hk_to_deva":
-            output = hkUdToHkAnu(ascii_text)
+            output = hk_ud_to_hk_anu(ascii_text)
         elif self.scheme == "hk_to_deva":
             output = "".join((filter(lambda x: x not in ["/"], ascii_text)))
         else:
@@ -286,14 +314,14 @@ class AsciiConverter:
 
 
 if __name__ == "__main__":
-    deva = "अ॒ग्निमी॑ळे पु॒रोहि॑तं य॒ज्ञस्य॑ दे॒वमृ॒त्विज॑म्"
-    hk = "agni/mILe puro/hitaM yajJa/sya deva/mRtvi/jam"
+    DEVA = "अ॒ग्निमी॑ळे पु॒रोहि॑तं य॒ज्ञस्य॑ दे॒वमृ॒त्विज॑म्"
+    HK = "agni/mILe puro/hitaM yajJa/sya deva/mRtvi/jam"
 
-    ascii_replace = AsciiConverter(
+    ascii_replace = AsciiDevanagari(
         scheme="hk_to_deva", udatta_to_anudatta=True)
-    print(ascii_replace.converter(hk))
-    print(ascii_replace.converter(hk) == deva)
-    ascii_replace = AsciiConverter(
+    print(ascii_replace.converter(HK))
+    print(ascii_replace.converter(HK) == DEVA)
+    ascii_replace = AsciiDevanagari(
         scheme="hk_to_deva", udatta_to_anudatta=False
         )
-    print(ascii_replace.converter(hk))
+    print(ascii_replace.converter(HK))
