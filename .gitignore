@@ -1,6 +1,3 @@
-# Misc.
-*.txt
-
 # Jupyter
 *.ipynb
 notebooks/private/
