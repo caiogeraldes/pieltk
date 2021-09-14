@@ -1,4 +1,5 @@
 import re
+from typing import Tuple
 
 ASCII_HK_TO_DEVA = (
     (r"([\n ]|^)ai", r"\1ऐ"),
@@ -257,11 +258,11 @@ def udToAnu(udStr):
 
 
 class AsciiConverter:
-    def __init__(self, scheme="hk_to_deva", udatta_to_anudatta=True):
+    def __init__(self, scheme: str = "hk_to_deva", udatta_to_anudatta: bool = True):
         self.udata_to_anudatta = udatta_to_anudatta
         if scheme == "hk_to_deva":
             self.scheme = "hk_to_deva"
-            self.script_set = ASCII_HK_TO_DEVA
+            self.script_set: Tuple[Tuple[str, str], ...] = ASCII_HK_TO_DEVA
         elif scheme == "hk_to_iast":
             self.scheme = "hk_to_iast"
             self.script_set = ASCII_HK_TO_IAST

@@ -48,5 +48,4 @@ alpha_to_oldpersian_cuneiform = (
     (r"s", "𐎿"),
     (r"z", "𐏀"),
     (r"š", "𐏁"),
-    (r"h", "𐏃"),
-)
+    (r"h", "𐏃"),)

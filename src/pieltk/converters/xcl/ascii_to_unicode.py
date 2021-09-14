@@ -18,7 +18,7 @@ TODO: Implement a system to derive the D՜D notation for numerical conversion.
 
 import re
 
-__author__ =  ["Caio Geraldes <caio.geraldes@usp.br"]
+__author__ = ["Caio Geraldes <caio.geraldes@usp.br"]
 
 
 ASCII_TO_ARMENIAN_SCRIPT_MINISCULES = [
@@ -122,7 +122,7 @@ ASCII_TO_ARMENIAN_SCRIPT_PUNCT = [
 ]
 
 ASCII_TO_ARMENIAN_ISO = [
-         # Miniscules
+        # Miniscules
         (r"ee",             r"ē"),
         (r"e'",             r"ë"),
         (r"o'",             r"ò"),
@@ -152,7 +152,7 @@ ASCII_TO_ARMENIAN_ISO = [
 ]
 
 ASCII_TO_ARMENIAN_CLASSICAL = [
-         # Miniscules
+        # Miniscules
         (r"ee",             r"ē"),
         (r"e'",             r"ə"),
         (r"o'",             r"ō"),
@@ -218,6 +218,7 @@ ARMENIAN_SCRIPT_NUMBERS = [
         (r"0",           r""),
 ]
 
+
 class AsciiConverter:
     """
     Replace ASCII notation with an Unicode transliteration scheme for
@@ -272,12 +273,14 @@ class AsciiConverter:
         if scheme == "armenian_alphabet":
             self.scheme = "armenian_alphabet"
             self.script_set = ASCII_TO_ARMENIAN_SCRIPT_MINISCULES\
-                    + ASCII_TO_ARMENIAN_SCRIPT_MAISCULES + ASCII_TO_ARMENIAN_SCRIPT_PUNCT\
-                    + ARMENIAN_SCRIPT_NUMBERS
+                + ASCII_TO_ARMENIAN_SCRIPT_MAISCULES\
+                + ASCII_TO_ARMENIAN_SCRIPT_PUNCT\
+                + ARMENIAN_SCRIPT_NUMBERS
         elif scheme == "armenian_maiscules":
             self.scheme = "armenian_maiscules"
-            self.script_set = ASCII_TO_ARMENIAN_SCRIPT_MAISCULES + ASCII_TO_ARMENIAN_SCRIPT_PUNCT\
-                    + ARMENIAN_SCRIPT_NUMBERS
+            self.script_set = ASCII_TO_ARMENIAN_SCRIPT_MAISCULES\
+                + ASCII_TO_ARMENIAN_SCRIPT_PUNCT\
+                + ARMENIAN_SCRIPT_NUMBERS
         elif scheme == "iso":
             self.scheme = "iso"
             self.script_set = ASCII_TO_ARMENIAN_ISO
@@ -308,4 +311,3 @@ if __name__ == "__main__":
     print(ascii_replace_maiscules.converter(string))
     string = "9821"
     print(ascii_replace_maiscules.converter(string))
-

@@ -1,6 +1,7 @@
 alpha_to_polytonicgreek = (
-   # Reordering diacritics
-   # Bringing breathings and diairesis first, then accents, then subscript iota
+    # Reordering diacritics
+    # Bringing breathings and diairesis first, then accents,
+    # then subscript iota
     (r"([\\/=])(\|)?([()+])?", r"\3\1\2"),
 
     (r"S|\*s", "Σ"),
@@ -54,42 +55,41 @@ alpha_to_polytonicgreek = (
     (r"u", "υ"),
     (r"w", "ω"),
 
-   # others
-   # lunate sigma
+    # others
+    # lunate sigma
     (r"σ3", "\u03f2"),
     (r"Σ3", "\u03f9"),
-   # fixed σ
+    # fixed σ
     (r"σ2", "σ"),
-   # koppa
+    # koppa
     (r"\*#2", "\u03de"),
     (r"#2", "\u03df"),
-   # koppa (archaic)
+    # koppa (archaic)
     (r"\*#3", "\u03d8"),
     (r"#3", "\u03d9"),
-   # sampi
+    # sampi
     (r"\*#4", "\u03e0"),
     (r"#4", "\u03e1"),
 
-   # Diacritics
-   # breathings
+    # Diacritics
+    # breathings
     (r"\)", "\u0313"),
     (r"\(", "\u0314"),
     (r"\+", "\u0308"),
-   # accents
+    # accents
     (r"\\", "\u0300"),
     (r"\/", "\u0301"),
     (r"=", "\u0342"),
-   # subscript iota
+    # subscript iota
     (r"\|", "\u0345"),
-   # dot below
+    # dot below
     (r"\?", "\u0323"),
-   # breve
+    # breve
     (r"%27", "\u0306"),
-   # longa / macron
+    # longa / macron
     (r"%26", "\u0304"),
 
-   # Punctuation
-   # middle dot
+    # Punctuation
+    # middle dot
     (r":", "\u00b7"),
-    (r"'", "\u02bc"),
-)
+    (r"'", "\u02bc"),)

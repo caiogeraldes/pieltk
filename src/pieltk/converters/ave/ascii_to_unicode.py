@@ -70,13 +70,13 @@ ASCII_TO_AVESTAN_SCRIPT = [
     (r"s",          "\U00010B2F"),  # 𐬯 AVESTAN LETTER SE
     (r"z",          "\U00010B30"),  # 𐬰 AVESTAN LETTER ZE
     (r"h",          "\U00010B35"),  # 𐬵 AVESTAN LETTER HE
-    # (r"<++>",       "\U00010B39"), # 𐬹 AVESTAN ABBREVIATION MARK
-    # (r"<++>",       "\U00010B3A"), # 𐬺 TINY TWO DOTS OVER ONE DOT PUNCTUATION
-    # (r"<++>",       "\U00010B3B"), # 𐬻 SMALL TWO DOTS OVER ONE DOT PUNCTUATION
-    # (r"<++>",       "\U00010B3C"), # 𐬼 LARGE TWO DOTS OVER ONE DOT PUNCTUATION
-    # (r"<++>",       "\U00010B3D"), # 𐬽 LARGE ONE DOT OVER TWO DOTS PUNCTUATION
-    # (r"<++>",       "\U00010B3E"), # 𐬾 LARGE TWO RINGS OVER ONE RING PUNCTUATION
-    # (r"<++>",       "\U00010B3F")  # 𐬿 LARGE ONE RING OVER TWO RINGS PUNCTUATION
+    # (r"",       "\U00010B39"), # 𐬹 AVESTAN ABBREVIATION MARK
+    # (r"",       "\U00010B3A"), # 𐬺 TINY TWO DOTS OVER ONE DOT PUNCTUATION
+    # (r"",       "\U00010B3B"), # 𐬻 SMALL TWO DOTS OVER ONE DOT PUNCTUATION
+    # (r"",       "\U00010B3C"), # 𐬼 LARGE TWO DOTS OVER ONE DOT PUNCTUATION
+    # (r"",       "\U00010B3D"), # 𐬽 LARGE ONE DOT OVER TWO DOTS PUNCTUATION
+    # (r"",       "\U00010B3E"), # 𐬾 LARGE TWO RINGS OVER ONE RING PUNCTUATION
+    # (r"",       "\U00010B3F")  # 𐬿 LARGE ONE RING OVER TWO RINGS PUNCTUATION
 ]
 
 

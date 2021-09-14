@@ -1,48 +1,45 @@
 import re
-import xcl as phon
+import pieltk.phonology.xcl.xcl as phon
+from pieltk.alphabet import xcl
 
-from cltk.alphabet.xcl import xcl
-from itertools import accumulate, product
+from itertools import accumulate
 
 
-def syllabify(string):
+def syllabify(string: str) -> list[str]:
     clean_string = string
 
-    # Remove punctuations
+    #  Remove punctuations
     for punct in xcl.PUNCTUATION:
         clean_string = clean_string.replace(punct, "")
 
-    # Remove multiple spaces if there are any
+    #  Remove multiple spaces if there are any
     clean_string = re.sub(r"\ +", " ", clean_string)
-
-
     words = clean_string.split(" ")
 
-    # Initialize the output
+    #  Initialize the output
     split_words = []
 
     for word in words:
-        # Split the word keeping diphthongs as a single entry in the list
+        #  Split the word keeping diphthongs as a single entry in the list
         letters = split_str(word)
+        syllables: list[str] = []
 
-        syllables = []
-
-        # Generates a list of the possible syllables in a given word using
-        # the letters in reversed order [::-1], joining them one by one in the
-        # right order (lambda function).
+        #  Generates a list of the possible syllables in a given word using
+        #  the letters in reversed order [::-1], joining them one by one in the
+        #  right order (lambda function).
         acc = list(accumulate(letters[::-1], func=lambda x, y: str(y)+str(x)))
 
-        # Loops until all the possible syllables are selected. When a syllable
-        # is selected, itself and its components are removed from the accumulated
-        # list and its effects on other syllables are cleaned with str.replace().
+        #  Loops until all the possible syllables are selected. When a syllable
+        #  is selected, itself and its components are removed from the accumulated
+        #  list and its effects on other syllables are cleaned with str.replace().
         #
-        # The syllable is selected by its score produced by the rules hard coded
-        # in syllab_score. It is possible to generalize the function with a
-        # dictionary, but it works for the moment.
+        #  The syllable is selected by its score produced by the rules hard coded
+        #  in syllab_score. It is possible to generalize the function with a
+        #  dictionary, but it works for the moment.
 
         while acc:
             scores = dict(zip(acc, list(map(syllab_score, acc))))
-            best_scorer = max(scores, key=scores.get)
+            best_scorer = max(scores, key=scores.get)  # type: ignore
             syllables.insert(0, best_scorer)
             acc = acc[acc.index(best_scorer)+1:]
             for i in range(len(acc)):

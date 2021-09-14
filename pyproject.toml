@@ -1,19 +1,54 @@
 [tool.poetry]
 name = "pieltk"
 version = "0.1.0"
-description = ""
-authors = ["Caio Geraldes <caio.geraldes@usp.br"]
+description = "Tools for linguistic processing of Ancient Indo-European Languages"
+authors = ["Caio Geraldes <caio.geraldes@usp.br>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/caiogeraldes/pieltk"
+
 
 [tool.poetry.dependencies]
 python = "^3.9"
-cltk = "^1.0.19"
+nltk = "^3.6.2"
+typing = "^3.7.4"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
 pylint = "^2.10.2"
-jupyter = "^1.0.0"
+flake8 = "^3.9.2"
+tox = "^3.24.3"
+mypy = "^0.910"
 notebook = "^6.4.3"
+jupyter = "^1.0.0"
+coverage = "^5.5"
+lxml = "^4.6.3"
+beautifulsoup4 = "^4.10.0"
+setuptools = "^58.0.4"
+autopep8 = "^1.5.7"
+pytest-cov = "^2.12.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "--cov=pieltk"
+testpaths = [
+    "tests",
+]
+
+
+[tool.mypy]
+mypy_path = "src"
+check_untyped_defs = true
+disallow_any_generics = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+no_implicit_reexport = true

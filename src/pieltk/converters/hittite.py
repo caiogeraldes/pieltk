@@ -2,15 +2,15 @@ alpha_to_hittite_cuneiform = (
     (r"'d", "𒀭"),
     (r"'m", "𒁹"),
     (r"gloss", "𒑱"),
-   
 
-   
+
+
     (r"GURUSH", "𒆗"),
     (r"DINGIR", "𒀭"),
     (r"BABBAR", "𒌓"),
-   
 
-   
+
+
     (r"ÉRIN", "𒂟"),
     (r"sal|MUNUS|'f", "𒊩"),
     (r"URUDU", "𒍏"),
@@ -22,7 +22,7 @@ alpha_to_hittite_cuneiform = (
     (r"EZEN4", "􀀉"),
     (r"GASAN", "𒃽"),
     (r"NINDA", "𒃻"),
-   
+
     (r"ANSE", "𒀲"),
     (r"KARAS", "𒆠𒆗𒁁"),
     (r"GÌR|GIR3", "𒄊"),
@@ -37,7 +37,7 @@ alpha_to_hittite_cuneiform = (
     (r"tas3|tàs", "𒀾"),
     (r"tén|ten2|DIN", "𒁷"),
 
-   
+
     (r"ANA", "𒀀𒈾"),
     (r"INA", "𒄿𒈾"),
     (r"ÍD|ID2", "𒀀𒇉"),
@@ -110,9 +110,9 @@ alpha_to_hittite_cuneiform = (
     (r"lum", "𒈝"),
     (r"GAG|DU3|DÙ", "𒆕"),
     (r"kam|TU7", "𒄰"),
-   
 
-   
+
+
     (r"um|UM", "𒌝"),
     (r"in", "𒅔"),
     (r"pu", "𒁍"),
@@ -204,17 +204,17 @@ alpha_to_hittite_cuneiform = (
     (r"BI", "𒁉"),
     (r"BU", "𒁍"),
 
-   
+
     (r"a|A", "𒀀"),
     (r"e", "𒂊"),
     (r"i|I", "𒄿"),
     (r"ú", "𒌑"),
     (r"Ú|u", "𒌋"),
     (r"É", "𒂍"),
-   
 
 
-   
+
+
     (r"1(\d)", r"𒌋\1"),
     (r"2", "𒈫"),
     (r"3", "𒐈"),
@@ -225,6 +225,4 @@ alpha_to_hittite_cuneiform = (
     (r"8", "𒐍"),
     (r"9", "𒐎"),
 
-    (r"-", ""),
-
-)
+    (r"-", ""),)
