@@ -141,6 +141,9 @@ class AsciiConverter:
                 String with the name of the transliteration scheme to be used.
                 Options: "script" and "roman-hoffman"
 
+    rules (self)
+        Return the conversion rules of the converter
+
     converter (self, ascii_string)
         Converts a ascii string to the converter's scheme.
 
@@ -164,16 +167,26 @@ class AsciiConverter:
             self.script_set = ASCII_TO_AVESTAN_SCRIPT
 
     def converter(self, ascii_text):
+        """
+        Covert ascii_text to unicode text according to the rules of self.
+        """
         output = ascii_text
 
         for pair in self.script_set:
             output = re.sub(pair[0], pair[1], output)
         return output
 
+    @property
+    def rules(self):
+        """
+        Return the conversion rules of the converter
+        """
+        return self.script_set
+
 
 if __name__ == "__main__":
     ascii_replace = AsciiConverter()
-    string = "ahiiA. yAsA na.manghA. ustAnazastO."
-    print(ascii_replace.converter(string))
+    STRING = "ahiiA. yAsA na.manghA. ustAnazastO."
+    print(ascii_replace.converter(STRING))
     ascii_replace = AsciiConverter("roman-hoffman")
-    print(ascii_replace.converter(string))
+    print(ascii_replace.converter(STRING))

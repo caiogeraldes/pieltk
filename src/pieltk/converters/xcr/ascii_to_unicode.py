@@ -1,3 +1,6 @@
+"""
+Converter for Carian Script
+"""
 import re
 
 ASCII_TO_CARIAN_SCRIPT = (
@@ -91,18 +94,31 @@ class AsciiConverter:
     """
 
     def __init__(self, scheme="script"):
+        if scheme != "script":
+            print("No other transliteration scheme implemented yet")
         self.scheme = "script"
         self.script_set = ASCII_TO_CARIAN_SCRIPT
 
     def converter(self, ascii_text):
+        """
+        Covert ascii_text to unicode text according to the rules of self.
+        """
         output = ascii_text
 
         for pair in self.script_set:
             output = re.sub(pair[0], pair[1], output)
         return output
 
+    @property
+    def rules(self):
+        """
+        Return the conversion rules of the converter
+        """
+        return self.script_set
+
+
 
 if __name__ == "__main__":
     carian = AsciiConverter()
-    string = "s'jas: san tur"
-    print(carian.converter(string))
+    STRING = "s'jas: san tur"
+    print(carian.converter(STRING))

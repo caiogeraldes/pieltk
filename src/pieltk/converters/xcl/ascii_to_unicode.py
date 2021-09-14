@@ -289,6 +289,9 @@ class AsciiConverter:
             self.script_set = ASCII_TO_ARMENIAN_CLASSICAL
 
     def converter(self, ascii_text):
+        """
+        Covert ascii_text to unicode text according to the rules of self.
+        """
         if self.scheme == "armenian_maiscules":
             output = ascii_text.upper()
         else:
@@ -298,16 +301,24 @@ class AsciiConverter:
             output = re.sub(pair[0], pair[1], output)
         return output
 
+    @property
+    def rules(self):
+        """
+        Return the conversion rules of the converter
+        """
+        return self.script_set
+
+
 
 if __name__ == "__main__":
     ascii_replace = AsciiConverter()
-    string = "Patasxani et hreshtakn ew asee c'na."
-    print(ascii_replace.converter(string))
+    STRING = "Patasxani et hreshtakn ew asee c'na."
+    print(ascii_replace.converter(STRING))
     ascii_replace_iso = AsciiConverter("iso")
-    print(ascii_replace_iso.converter(string))
+    print(ascii_replace_iso.converter(STRING))
     ascii_replace_classical = AsciiConverter("classical")
-    print(ascii_replace_classical.converter(string))
+    print(ascii_replace_classical.converter(STRING))
     ascii_replace_maiscules = AsciiConverter("armenian_maiscules")
-    print(ascii_replace_maiscules.converter(string))
-    string = "9821"
-    print(ascii_replace_maiscules.converter(string))
+    print(ascii_replace_maiscules.converter(STRING))
+    STRING = "9821"
+    print(ascii_replace_maiscules.converter(STRING))

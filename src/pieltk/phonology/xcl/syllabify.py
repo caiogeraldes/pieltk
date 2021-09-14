@@ -1,12 +1,19 @@
+"""
+Implements a tool for syllabifying Classical Armenian
+"""
+
 import re
+from itertools import accumulate
 import pieltk.phonology.xcl.xcl as phon
 from pieltk.alphabet import xcl
 
-from itertools import accumulate
 
+def syllabify(input_string: str) -> list[str]:
+    """
+    Syllabifies Classical Armenian String
+    """
 
-def syllabify(string: str) -> list[str]:
-    clean_string = string
+    clean_string = input_string
 
     #  Remove punctuations
     for punct in xcl.PUNCTUATION:
@@ -42,15 +49,18 @@ def syllabify(string: str) -> list[str]:
             best_scorer = max(scores, key=scores.get)  # type: ignore
             syllables.insert(0, best_scorer)
             acc = acc[acc.index(best_scorer)+1:]
-            for i in range(len(acc)):
-                acc[i] = acc[i].replace(best_scorer, "")
+            for count, _ in enumerate(acc):
+                acc[count] = acc[count].replace(best_scorer, "")
 
         split_words.append(".".join(syllables))
 
-    return(split_words)
+    return split_words
 
 
 def syllab_score(syllab: str) -> int:
+    """
+    Scores how heavy a syllable is.
+    """
     score = 0
     syllab_split = split_str(syllab)
     if len(syllab_split) <= 4:
@@ -78,10 +88,13 @@ def syllab_score(syllab: str) -> int:
     return score
 
 
-def split_str(string: str) -> list[str]:
+def split_str(input_string: str) -> list[str]:
+    """
+    Split string keeping diphtongs
+    """
     letters = []
     poss_diph = ""
-    for letter in string:
+    for letter in input_string:
         if letter in phon.CONSONANTS:
             if poss_diph:
                 letters.append(poss_diph)
@@ -90,20 +103,26 @@ def split_str(string: str) -> list[str]:
         elif letter in phon.MONOPHTONGS:
             poss_diph += letter
 
-    return(letters)
+    return letters
 
 
 def char_type(char: str) -> str:
+    """
+    Give type of character.
+    """
     if char in phon.VOWELS:
-        return("V")
+        chartype = "V"
     elif char in phon.RESONANTS:
-        return("R")
+        chartype = "R"
     else:
-        return("C")
+        chartype = "C"
+    return chartype
 
 
 if __name__ == '__main__':
-    string = "Զինչ օգտիցի մարդ՝ եթէ զաշխարհս ամենայն շահեսցի եւ զանձն իւր տուժեսցի կամ զինչ տացէ      մարդ փրկանս ընդ անձին իւրում"
-    teste = syllabify(string)
+    STRING = """Զինչ օգտիցի մարդ՝ եթէ զաշխարհս ամենայն շահեսցի եւ
+    զանձն իւր տուժեսցի կամ զինչ տացէ
+    մարդ փրկանս ընդ անձին իւրում"""
+    teste = syllabify(STRING)
     for x in teste:
         print(x)
