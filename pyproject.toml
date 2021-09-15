@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pieltk"
-version = "0.2.0"
+version = "0.2.1"
 description = "Tools for linguistic processing of Ancient Indo-European Languages"
 authors = ["Caio Geraldes <caio.geraldes@usp.br>"]
 license = "MIT"
